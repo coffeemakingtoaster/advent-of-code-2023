@@ -7,3 +7,7 @@ As the goal is to have automated runs of all problems all entries have to take i
 Therefore all programs should expect a file "input.txt" and print the computation result to stdout.
 
 Submit your entries within a directory with your name. For a guideline on how to structure your directory see the example directory.
+
+## Data directory
+
+For every problem you solve checkin the input and expected output in the data folder. This allows for benchmarking with multiple inputs/over multiple runs.
