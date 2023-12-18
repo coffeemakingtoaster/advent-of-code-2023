@@ -43,7 +43,6 @@ func main() {
 		first_digit := re.FindString(v)
 		second_digit := re.FindString(reverse(v))
 		n, _ := strconv.Atoi(first_digit + second_digit)
-		fmt.Println(sum)
 		sum = sum + n
 	}
 	fmt.Println(sum)

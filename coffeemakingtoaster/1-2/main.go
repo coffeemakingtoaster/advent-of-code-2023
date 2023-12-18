@@ -73,7 +73,6 @@ func main() {
 			second_digit = wordToInt(second_digit)
 		}
 		n, _ := strconv.Atoi(first_digit + second_digit)
-		fmt.Println(sum)
 		sum = sum + n
 	}
 	fmt.Println(sum)
