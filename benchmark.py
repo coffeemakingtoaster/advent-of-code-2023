@@ -16,6 +16,7 @@ def benchmark_folder(name: str) -> float:
     solution_dirs = get_dirs(f"./{name}")
     input_dirs = get_dirs("./data")
     timer_sum = 0
+    solved_problems = 0
     
     for d in input_dirs:
         if d not in solution_dirs:
@@ -37,16 +38,17 @@ def benchmark_folder(name: str) -> float:
                 print(f"{output}:{expected_res}")
                 sys.exit(1)
             os.remove(os.path.join(name, d, "input.txt"))
+            solved_problems += 1
             
-    return timer_sum
+    return timer_sum, solved_problems
     
 
 def main() -> None:
     benchmarks = defaultdict(lambda: 0)
     print(f"Benchmarking {len(PARTICIPANTS)} participants")
     for participant in PARTICIPANTS:
-        benchmarks[participant] = benchmark_folder(participant)
-        print(f"{participant}:{benchmarks[participant]}")
+        timer, solved_problems = benchmark_folder(participant)
+        print(f"{participant}: {timer} ({solved_problems} problems solved)")
     
 
 if __name__ == "__main__":
