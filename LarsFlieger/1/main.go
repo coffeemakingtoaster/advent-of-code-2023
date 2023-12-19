@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	dat, e := os.ReadFile("./inputs/1")
+	dat, e := os.ReadFile("./input.txt")
 	if e != nil {
 		panic(e)
 	}

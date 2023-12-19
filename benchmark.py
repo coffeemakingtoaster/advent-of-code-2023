@@ -6,7 +6,7 @@ import subprocess
 
 from collections import defaultdict
 
-PARTICIPANTS = ["coffeemakingtoaster"]
+PARTICIPANTS = ["coffeemakingtoaster", "LarsFlieger"]
 
 def get_dirs(path: str) -> list[str]:
     return [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
