@@ -34,7 +34,6 @@ func readLines() ([]string, error) {
 func main() {
 	// Ignore error
 	input, _ := readLines()
-	fmt.Println(input[0])
 
 	sum := 0
 	re := regexp.MustCompile("[0-9]")
