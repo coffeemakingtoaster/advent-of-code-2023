@@ -14,6 +14,13 @@ type CubeValues struct {
 	Green int
 }
 
+func getMax(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func readLines() ([]string, error) {
 	file, err := os.Open("./input.txt")
 	if err != nil {
@@ -32,13 +39,13 @@ func readLines() ([]string, error) {
 func (c *CubeValues) UpdateMin(a int, key string) {
 	switch key {
 	case "green":
-		c.Green = max(c.Green, a)
+		c.Green = getMax(c.Green, a)
 		break
 	case "red":
-		c.Red = max(c.Red, a)
+		c.Red = getMax(c.Red, a)
 		break
 	default:
-		c.Blue = max(c.Blue, a)
+		c.Blue = getMax(c.Blue, a)
 	}
 }
 
