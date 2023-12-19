@@ -23,13 +23,13 @@ def benchmark_folder(name: str) -> float:
             print(f"Incomplete {d}")
             continue
         input_options = get_dirs(os.path.join("data",d))
+        print(f"Benchmarking {d} with {len(input_options)} inputs")
         for option in input_options:
             shutil.copy(os.path.join("data", d, option, "input.txt"), os.path.join(name, d, "input.txt"))
             expected_res = ""
             with open(os.path.join("data", d, option, "output.txt")) as f:
                 expected_res = f.read()
                 expected_res = expected_res.replace("\n", "")
-            print(f"Benchmarking {d}")
             start_time = time.time()
             res = subprocess.run("./main", cwd=os.path.join(name, d),shell=True, check=True, capture_output=True, text=True)
             end_time = time.time()
