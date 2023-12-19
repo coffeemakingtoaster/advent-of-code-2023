@@ -29,23 +29,25 @@ def benchmark_folder(name: str) -> float:
             with open(os.path.join("data", d, option, "output.txt")) as f:
                 expected_res = f.read()
                 expected_res = expected_res.replace("\n", "")
+            print(f"Benchmarking {d}")
             start_time = time.time()
             res = subprocess.run("./main", cwd=os.path.join(name, d),shell=True, check=True, capture_output=True, text=True)
-            timer_sum += (time.time() - start_time)
+            end_time = time.time()
             output = res.stdout
             output = output.replace("\n","")
             if output != expected_res:
-                print(f"{output}:{expected_res}")
-                sys.exit(1)
+                print(f"One problem failed (expected: {output}\treceived: {expected_res})")
+                continue
             os.remove(os.path.join(name, d, "input.txt"))
             solved_problems += 1
+            timer_sum += (end_time - start_time)
             
     return timer_sum, solved_problems
     
 
 def main() -> None:
     benchmarks = defaultdict(lambda: 0)
-    print(f"Benchmarking {len(PARTICIPANTS)} participants")
+    print(f"Benchmarking {len(PARTICIPANTS)} participant(s)")
     for participant in PARTICIPANTS:
         timer, solved_problems = benchmark_folder(participant)
         print(f"{participant}: {timer} ({solved_problems} problems solved)")
