@@ -55,7 +55,6 @@ func get_val(prev_line string, line string, next_line string, start_index int, e
 	if !strings.ContainsAny(buffer, "* | / | = | $ | @ | # | % | + | - | &") {
 		return 0
 	}
-	fmt.Println(num)
 	return num
 }
 

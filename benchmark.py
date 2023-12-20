@@ -36,7 +36,7 @@ def benchmark_folder(name: str) -> float:
             output = res.stdout
             output = output.replace("\n","")
             if output != expected_res:
-                print(f"One problem failed (expected: {output}\treceived: {expected_res})")
+                print(f"One problem failed (expected: {expected_res}\treceived: {output})")
                 continue
             os.remove(os.path.join(name, d, "input.txt"))
             solved_problems += 1
