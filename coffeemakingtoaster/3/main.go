@@ -63,18 +63,16 @@ func main() {
 	sum := 0
 	for i, v := range input {
 		line := string(v)
-		prev_line := input[max(0, i-1)]
-		next_line := input[min(len(input)-1, i+1)]
 
 		is_in_number := false
 		start_index := 0
 
-		for i, v := range line {
+		for j, v := range line {
 			// No number (i.e. number end) or end of line
-			if !unicode.IsDigit(v) || (i == len(line)-1 && is_in_number) {
+			if !unicode.IsDigit(v) || (j == len(line)-1 && is_in_number) {
 				if is_in_number {
 					is_in_number = false
-					sum += get_val(prev_line, line, next_line, start_index, i)
+					sum += get_val(input[max(0, j-1)], input[j], input[min(len(input)-1, j+1)], start_index, j)
 				}
 				continue
 			}
@@ -84,10 +82,10 @@ func main() {
 			}
 
 			is_in_number = true
-			start_index = i
+			start_index = j
 
 			if i == len(line)-1 && is_in_number {
-				sum += get_val(prev_line, line, next_line, start_index, i)
+				sum += get_val(prev_line, line, next_line, start_index, j)
 			}
 		}
 	}
